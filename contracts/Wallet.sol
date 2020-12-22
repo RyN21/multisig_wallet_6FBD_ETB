@@ -22,5 +22,15 @@ contract Wallet {
     return approvers;
   }
 
+  function createTransfer(uint amount, address payable to) external {
+    transfers[nextId] = Transfer(
+      nextId,
+      amount,
+      to,
+      0,
+      false
+    );
+    nextId++;
+  }
 
 }
