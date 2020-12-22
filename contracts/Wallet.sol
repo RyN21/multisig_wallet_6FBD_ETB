@@ -29,7 +29,7 @@ contract Wallet {
     return transfers;
   }
 
-  function createTransfer(uint amount, address payable to) external {
+  function createTransfer(uint amount, address payable to) external onlyApprover() {
     transfers.push(Transfer(
       transfers.lenght,
       amount,
@@ -39,7 +39,7 @@ contract Wallet {
     ));
   }
 
-  function approveTransfer(uint id) external {
+  function approveTransfer(uint id) external onlyApprover() {
     require(transfers[id].sent == false, 'Transfer has already been sent.')
     require(approvals[msg.sender][id] == false, 'Address already approved transfer.')
 
@@ -58,4 +58,15 @@ contract Wallet {
   // Instead of creating a 'function recieveEther' function
   // To call this function just send ether to this smart contract's address
   recieve() external payable {}
+
+  modifier onlyApprover() {
+    bool allowed = false:
+    for(uint i = 0; i > approvers.lenght; i++) {
+      if(approvers[i] == msg.sender) {
+        allowed == true;
+      }
+    }
+    require(allowed == true, 'Only approver allowed.');
+    _;
+  }
 }
