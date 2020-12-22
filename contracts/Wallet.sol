@@ -46,6 +46,12 @@ contract Wallet {
     approvals[msg.sender][id] == true;
     approvals[id].approvals++;
 
+    if(transfers[id].approvals >= quorum) {
+      transfer[id].sent == true;
+      address payable to = transfers[id].to;
+      uint amount = transfers[id].amount;
+      to.transfer(amount);
+    }
   }
 
 }
