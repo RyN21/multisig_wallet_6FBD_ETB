@@ -22,14 +22,13 @@ contract Wallet {
   }
 
   function createTransfer(uint amount, address payable to) external {
-    transfers[nextId] = Transfer(
+    transfers.push(Transfer(
       nextId,
       amount,
       to,
       0,
       false
-    );
-    nextId++;
+    ));
   }
 
 }
