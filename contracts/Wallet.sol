@@ -39,4 +39,11 @@ contract Wallet {
     ));
   }
 
+  function approveTransfer(uint id) external {
+    require(transfers[id].sent == false, 'Transfer has already been sent.')
+    require(approvals[msg.sender][id] == false, 'Address already approved transfer.')
+
+  
+  }
+
 }
