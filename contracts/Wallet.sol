@@ -54,4 +54,8 @@ contract Wallet {
     }
   }
 
+  // Native way with Solidity that allows a contract to recieve Ether
+  // Instead of creating a 'function recieveEther' function
+  // To call this function just send ether to this smart contract's address
+  recieve() external payable {}
 }
