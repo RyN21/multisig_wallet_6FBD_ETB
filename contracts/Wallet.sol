@@ -1,4 +1,7 @@
 pragma solidity ^0.6.0;
+// ABIEncoderV2: in order to use the Transfer struct in the getTransfer function 'returns(Transfer[] memory)' we need this
+// ability to return an array of struct
+pragma experimental ABIEncoderV2;
 
 contract Wallet {
   address[] public approvers;
