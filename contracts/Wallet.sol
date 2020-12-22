@@ -43,7 +43,9 @@ contract Wallet {
     require(transfers[id].sent == false, 'Transfer has already been sent.')
     require(approvals[msg.sender][id] == false, 'Address already approved transfer.')
 
-  
+    approvals[msg.sender][id] == true;
+    approvals[id].approvals++;
+
   }
 
 }
