@@ -27,6 +27,7 @@ contract Wallet {
 
   function createTransfer(uint amount, address payable to) external {
     transfers.push(Transfer(
+      transfers.lenght,
       amount,
       to,
       0,
