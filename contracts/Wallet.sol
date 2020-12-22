@@ -10,7 +10,8 @@ contract Wallet {
     uint approvals;
     bool sent;
   }
-  
+  mapping(uint => Transfer) public transfers;
+
   constructor(address[] memory _approvers, uint _quorum) public {
     approvers = _approvers;
     quorum    = _quorum;
