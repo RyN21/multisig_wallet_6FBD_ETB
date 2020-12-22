@@ -10,7 +10,7 @@ contract Wallet {
     uint approvals;
     bool sent;
   }
-  Transfers[] public transfers;
+  Transfer[] public transfers;
 
   constructor(address[] memory _approvers, uint _quorum) public {
     approvers = _approvers;
@@ -21,9 +21,12 @@ contract Wallet {
     return approvers;
   }
 
+  function getTransfers() external view returns(Transfer[] memory) {
+    return transfers;
+  }
+
   function createTransfer(uint amount, address payable to) external {
     transfers.push(Transfer(
-      nextId,
       amount,
       to,
       0,
