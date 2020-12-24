@@ -76,4 +76,12 @@ contract('Wallet', (accounts) => {
     const transfers = await wallet.getTransfers();
     assert(transfers[0].approvals === '2');
   });
+
+  it('Should NOT approve transfer is sender is not approved', async () => {
+    await wallet.createTransfer(100, accounts[5], {from: accounts[0]});
+    await expectRevert(
+      wallet.approveTransfer(0, {from: accounts[7]}),
+      'Only approver allowed.'
+    );
+  });
 });
