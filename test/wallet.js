@@ -75,6 +75,7 @@ contract('Wallet', (accounts) => {
     assert(finalBalance.sub(initialBalance).toNumber() === 100);
     const transfers = await wallet.getTransfers();
     assert(transfers[0].approvals === '2');
+    assert(transfers[0].sent === true);
   });
 
   it('Should NOT approve transfer is sender is not approved', async () => {
@@ -82,6 +83,16 @@ contract('Wallet', (accounts) => {
     await expectRevert(
       wallet.approveTransfer(0, {from: accounts[7]}),
       'Only approver allowed.'
+    );
+  });
+
+  it('Should NOT approve transfer if transfer is already sent', async () => {
+    await wallet.createTransfer(100, accounts[5], {from: accounts[0]});
+    await wallet.approveTransfer(0, {from: accounts[0]}),
+    await wallet.approveTransfer(0, {from: accounts[1]}),
+    await expectRevert(
+      wallet.approveTransfer(0, {from: accounts[2]}),
+      'Transfer has already been sent.'
     );
   });
 });
