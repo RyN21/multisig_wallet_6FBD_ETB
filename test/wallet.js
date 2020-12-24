@@ -27,12 +27,12 @@ contract('Wallet', (accounts) => {
   it('Should create a transfer', async () => {
     await wallet.createTransfer(100, accounts[4], {from: account[0]});
     const transfers = await wallet.getTransfers();
-    assert(transfers.length == 1);
-    assert(transfers[0].id == '0');
-    assert(transfers[0].amount == '100');
-    assert(transfers[0].to == account[4]);
-    assert(transfers[0].approvals == '0');
-    assert(transfers[0].sent == false);
+    assert(transfers.length === 1);
+    assert(transfers[0].id === '0');
+    assert(transfers[0].amount === '100');
+    assert(transfers[0].to === account[4]);
+    assert(transfers[0].approvals === '0');
+    assert(transfers[0].sent === false);
     // Numbers that are fields of structs are not wrapped in BN.js objects
     // They are strings instead
   });
