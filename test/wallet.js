@@ -23,4 +23,15 @@ contract('Wallet', (accounts) => {
     // If BN is too large to convert to a javascript number
     // then use method '.toString' to assert to a string of the large number
   });
+
+  it('Should create a transfer', async () => {
+    const newTransfer = await wallet.createTransfer(1000, accounts[4]);
+    assert(transfers.length == 1);
+    assert(transfers[0] == newTransfer);
+    assert(newTransfer.id == 1);
+    assert(newTransfer.amount == 1000);
+    assert(newTransfer.to == account[4]);
+    assert(newTransfer.approvals == 0);
+    assert(newTransfer.sent == false);
+  });
 });
