@@ -25,11 +25,11 @@ contract('Wallet', (accounts) => {
   });
 
   it('Should create a transfer', async () => {
-    const newTransfer = await wallet.createTransfer(1000, accounts[4]);
+    await wallet.createTransfer(100, accounts[4], {from: account[0]});
     assert(transfers.length == 1);
     assert(transfers[0] == newTransfer);
     assert(newTransfer.id == 1);
-    assert(newTransfer.amount == 1000);
+    assert(newTransfer.amount == 100);
     assert(newTransfer.to == account[4]);
     assert(newTransfer.approvals == 0);
     assert(newTransfer.sent == false);
