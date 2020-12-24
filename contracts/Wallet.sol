@@ -43,11 +43,11 @@ contract Wallet {
     require(transfers[id].sent == false, 'Transfer has already been sent.');
     require(approvals[msg.sender][id] == false, 'Address already approved transfer.');
 
-    approvals[msg.sender][id] == true;
+    approvals[msg.sender][id] = true;
     transfers[id].approvals++;
 
     if(transfers[id].approvals >= quorum) {
-      transfers[id].sent == true;
+      transfers[id].sent = true;
       address payable to = transfers[id].to;
       uint amount = transfers[id].amount;
       to.transfer(amount);
