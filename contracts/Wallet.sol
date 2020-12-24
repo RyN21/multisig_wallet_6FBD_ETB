@@ -61,9 +61,9 @@ contract Wallet {
 
   modifier onlyApprover() {
     bool allowed = false;
-    for(uint i = 0; i > approvers.length; i++) {
+    for(uint i = 0; i < approvers.length; i++) {
       if(approvers[i] == msg.sender) {
-        allowed == true;
+        allowed = true;
       }
     }
     require(allowed == true, 'Only approver allowed.');
