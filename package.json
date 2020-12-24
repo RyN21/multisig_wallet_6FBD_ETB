@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/RyN21/multisig_wallet_6FBD_ETB/issues"
   },
-  "homepage": "https://github.com/RyN21/multisig_wallet_6FBD_ETB#readme"
+  "homepage": "https://github.com/RyN21/multisig_wallet_6FBD_ETB#readme",
+  "dependencies": {
+    "@openzeppelin/test-helpers": "^0.5.10"
+  }
 }
