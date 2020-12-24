@@ -16,6 +16,7 @@ contract('Wallet', (accounts) => {
     assert(approvers[2] === accounts[2]);
     assert(approvers === [accounts[0], accounts[1], accounts[2]]);
     assert(quorum === 2);
-
+    // Solidity numbers are wrapped in BN.js
+    // BN.js library that deals will large numbers
   });
 });
