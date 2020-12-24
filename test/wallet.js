@@ -39,6 +39,7 @@ contract('Wallet', (accounts) => {
   });
 
   it('Should NOT create transfer if sender is not approved', async () => {
+    // Using openzeppelin/test-helper instead of try catch block
     await expectRevert(
       wallet.createTransfer(100, accounts[4], {from: accounts[4]}),
       'Only approver allowed.'
@@ -54,4 +55,11 @@ contract('Wallet', (accounts) => {
     // }
     // return(false);
   });
+
+  it('Should increment approval', async () => {
+    await wallet.createTransfer(100, accounts[4], {from: accounts[0]});
+    await wallet.approveTransfer(0, {from: accounts[0]});
+    const transfers = await wallet.getTransfers();
+    assert(transfers[0].approvals == '1')
+  })
 });
