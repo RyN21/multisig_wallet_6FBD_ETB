@@ -60,9 +60,20 @@ contract('Wallet', (accounts) => {
     await wallet.createTransfer(100, accounts[4], {from: accounts[0]});
     await wallet.approveTransfer(0, {from: accounts[0]});
     const transfers = await wallet.getTransfers();
-    const balance = web3.eth.getBalance(wallet.address);
+    const balance = await web3.eth.getBalance(wallet.address);
     assert(transfers[0].approvals === '1');
     assert(transfers[0].sent === false);
-    assert(balance === '1000')
-  })
+    assert(balance === '1000');
+  });
+
+  it('Should send transfer if quorum reached', async () => {
+    const initialBalance = web3.utils.toBN(await web3.eth.getBalance(accounts[6]));
+    await wallet.createTransfer(100, accounts[6], {from: accounts[0]});
+    await wallet.approveTransfer(0, {from: accounts[0]});
+    await wallet.approveTransfer(0, {from: accounts[1]});
+    const finalBalance = web3.utils.toBN(await web3.eth.getBalance(accounts[6]));
+    assert(finalBalance.sub(initialBalance).toNumber() === 100);
+    const transfers = await wallet.getTransfers();
+    assert(transfers[0].approvals === '2');
+  });
 });
