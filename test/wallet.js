@@ -36,4 +36,14 @@ contract('Wallet', (accounts) => {
     // Numbers that are fields of structs are not wrapped in BN.js objects
     // They are strings instead
   });
+
+  it('Should NOT create transfer if sender is not approved', async () => {
+    try {
+      await wallet.createTransfer(100, accounts[4], {from: accounts[4]});
+    } catch (e) {
+      assert(e.message.includes('Only approver allowed.'));
+      return;
+    }
+    return(false);
+  });
 });
