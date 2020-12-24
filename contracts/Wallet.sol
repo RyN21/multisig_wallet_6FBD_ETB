@@ -31,7 +31,7 @@ contract Wallet {
 
   function createTransfer(uint amount, address payable to) external onlyApprover() {
     transfers.push(Transfer(
-      transfers.lenght,
+      transfers.length,
       amount,
       to,
       0,
@@ -40,14 +40,14 @@ contract Wallet {
   }
 
   function approveTransfer(uint id) external onlyApprover() {
-    require(transfers[id].sent == false, 'Transfer has already been sent.')
-    require(approvals[msg.sender][id] == false, 'Address already approved transfer.')
+    require(transfers[id].sent == false, 'Transfer has already been sent.');
+    require(approvals[msg.sender][id] == false, 'Address already approved transfer.');
 
     approvals[msg.sender][id] == true;
-    approvals[id].approvals++;
+    transfers[id].approvals++;
 
     if(transfers[id].approvals >= quorum) {
-      transfer[id].sent == true;
+      transfers[id].sent == true;
       address payable to = transfers[id].to;
       uint amount = transfers[id].amount;
       to.transfer(amount);
@@ -57,11 +57,11 @@ contract Wallet {
   // Native way with Solidity that allows a contract to recieve Ether
   // Instead of creating a 'function recieveEther' function
   // To call this function just send ether to this smart contract's address
-  recieve() external payable {}
+  receive() external payable {}
 
   modifier onlyApprover() {
-    bool allowed = false:
-    for(uint i = 0; i > approvers.lenght; i++) {
+    bool allowed = false;
+    for(uint i = 0; i > approvers.length; i++) {
       if(approvers[i] == msg.sender) {
         allowed == true;
       }

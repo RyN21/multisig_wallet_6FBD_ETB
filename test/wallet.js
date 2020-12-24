@@ -14,7 +14,6 @@ contract('Wallet', (accounts) => {
     assert(approvers[0] === accounts[0]);
     assert(approvers[1] === accounts[1]);
     assert(approvers[2] === accounts[2]);
-    assert(approvers === [accounts[0], accounts[1], accounts[2]]);
     assert(quorum.toNumber() === 2);
     // A method of BN is '.toNumber'
     // quurom.toNumber convers solidity BN into javascript number
