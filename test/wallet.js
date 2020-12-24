@@ -37,10 +37,13 @@ contract('Wallet', (accounts) => {
     // They are strings instead
   });
 
-  it('Should NOT create transfer if sender is not approved', async () => {
+  it.only('Should NOT create transfer if sender is not approved', async () => {
     try {
       await wallet.createTransfer(100, accounts[4], {from: accounts[4]});
     } catch (e) {
+      // two objects that are caught
+      console.log(e.message)
+      console.log(e.reason)
       assert(e.message.includes('Only approver allowed.'));
       return;
     }
