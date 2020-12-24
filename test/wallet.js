@@ -20,5 +20,8 @@ contract('Wallet', (accounts) => {
     // quurom.toNumber convers solidity BN into javascript number
     // Solidity numbers are wrapped in BN.js
     // BN.js library that deals will large numbers
+
+    // If BN is too large to convert to a javascript number
+    // then use method '.toString' to assert to a string of the large number
   });
 });
