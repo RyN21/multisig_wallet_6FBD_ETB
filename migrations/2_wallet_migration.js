@@ -1,7 +1,7 @@
 const Wallet = artifacts.require('Wallet');
-const approvers = [accounts[0], accounts[1], accounts[2]];
 
 module.exports = async function (deployer, _network, accounts) {
+  const approvers = [accounts[0], accounts[1], accounts[2]];
   await deployer.deploy(Wallet, approvers, 2);
   // Make a pointer to our deployed smart contract.
   const wallet = await Wallet.deployed();
