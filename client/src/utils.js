@@ -14,4 +14,4 @@ const getWallet = async web3 => {
   );
 };
 
-export ( getWeb3, getWallet )
+export ( getWeb3, getWallet );
