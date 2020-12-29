@@ -37,6 +37,7 @@ function App() {
   return (
     <div>
       Multisig Dapp
+      <header approvers={approvers} quorum={quorum}/>
     </div>
   );
 }
