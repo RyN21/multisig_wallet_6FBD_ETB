@@ -1,6 +1,7 @@
 // import tools from react's api library called Hooks
 import React, { useEffect, useState } from 'react';
 import { getWeb3, getWallet } from './utils.js';
+import Header from './Header.js';
 
 function App() {
   const [web3, setWeb3] = useState(undefined);
