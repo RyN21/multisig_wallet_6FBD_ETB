@@ -17,7 +17,15 @@ function App() {
       setWallet(wallet);
     };
     init();
-  });
+  }, []);
+
+  if(
+    typeof web3 === 'undefined'
+    || typeof accounts === 'undefined'
+    || typeof wallet === 'undefined'
+  ) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
