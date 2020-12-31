@@ -52,7 +52,7 @@ function App() {
       Multisig Dapp
       <Header approvers={approvers} quorum={quorum} />
       <NewTransfer createTransfer={createTransfer} />
-      <TransferList transfers={transfers}/>
+      <TransferList transfers={transfers} />
     </div>
   );
 }

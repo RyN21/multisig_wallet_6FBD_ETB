@@ -15,13 +15,14 @@ function TransferList({transfers}) {
           </tr>
         </thead>
         <tbody>
-          (trasnfers.map(transfer => (
+          (transfers.map(transfer => (
             <tr key={transfer.id}>
               <td>{transfer.id}</td>
               <td>{transfer.amount}</td>
               <td>{transfer.to}</td>
               <td>{transfer.approvers}</td>
               <td>{transfer.sent ? 'yes' : 'no'}</td>
+            </tr>
           )))
         </tbody>
       </table>
