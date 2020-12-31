@@ -4,6 +4,12 @@ function NewTransfer() {
   // define a state for the transfer object that we are going to create with a form
   const [transfer, setTransfer] = useState(undefined);
 
+  // create update transfer function
+  const updateTransfer = (e, field) => {
+    const value = e.target.value;
+    setTransfer({...transfer, [field]: value});
+  }
+
   // return HTML
   return (
     <div>
@@ -20,7 +26,7 @@ function NewTransfer() {
         <input
           id="to"
           type="text"
-          onChange={e => updateTransfer(e, 'amount')}
+          onChange={e => updateTransfer(e, 'to')}
         />
         <button>Submit</button>
       </form>
