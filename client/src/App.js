@@ -37,6 +37,12 @@ function App() {
       .send({from: accounts[0]});
   }
 
+  const approveTranfer = transferId => {
+    wallet.methods
+      .approveTranfer(transferId)
+      .send({from: accounts[0]});
+  }
+
   if(
     typeof web3 === 'undefined'
     || typeof accounts === 'undefined'
