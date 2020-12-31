@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 
-function NewTransfer() {
+function NewTransfer({createTransfer}) {
   // define a state for the transfer object that we are going to create with a form
   const [transfer, setTransfer] = useState(undefined);
+
+  // create function for when we submit the form
+  const submit = e => {
+    e.preventDefault();
+    createTransfer(transfer);
+  }
 
   // create update transfer function
   const updateTransfer = (e, field) => {
@@ -14,7 +20,7 @@ function NewTransfer() {
   return (
     <div>
       <h2>Create Transfer</h2>
-      <form>
+      <form onSubmit={(e) => submit(e)}>
         <label htmlFor="amount">Amount</label>
         <input
           id="amount"
