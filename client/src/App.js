@@ -37,9 +37,9 @@ function App() {
       .send({from: accounts[0]});
   }
 
-  const approveTranfer = transferId => {
+  const approveTransfer = transferId => {
     wallet.methods
-      .approveTranfer(transferId)
+      .approveTransfer(transferId)
       .send({from: accounts[0]});
   }
 
@@ -58,7 +58,7 @@ function App() {
       Multisig Dapp
       <Header approvers={approvers} quorum={quorum} />
       <NewTransfer createTransfer={createTransfer} />
-      <TransferList transfers={transfers} />
+      <TransferList transfers={transfers} approveTransfer ={approveTransfer} />
     </div>
   );
 }
