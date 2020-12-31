@@ -9,7 +9,12 @@ function NewTransfer() {
     <div>
       <h2>Create Transfer</h2>
       <form>
-        
+        <label htmlFor="amount">Amount</label>
+        <input
+          id="amount"
+          type="text"
+          onChange={e => updateTransfer(e, 'amount')}
+        />
       </form>
     </div>
   )
