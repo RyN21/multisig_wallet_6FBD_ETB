@@ -14,15 +14,15 @@ function App() {
     const init = async () => {
       const web3 = getWeb3();
       const accounts = await web3.eth.getAccounts();
-      const wallets = await getWallet(web3);
-      const approvers = wallet.methods.getApprovers().call();
+      const wallet = await getWallet(web3);
+      const approvers = await wallet.methods.getApprovers().call();
       const quorum = await wallet.methods.quorum().call();
       setWeb3(web3);
       setAccounts(accounts);
       setWallet(wallet);
       setApprovers(approvers);
       setQuorum(quorum);
-    };
+    }
     init();
   }, []);
 
@@ -39,7 +39,7 @@ function App() {
   return (
     <div>
       Multisig Dapp
-      <header approvers={approvers} quorum={quorum}/>
+      <Header approvers={approvers} quorum={quorum} />
     </div>
   );
 }
