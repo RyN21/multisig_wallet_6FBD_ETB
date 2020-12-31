@@ -5,7 +5,6 @@ function TransferList({transfers}) {
     <div>
     <h2>Transfers</h2>
       <table>
-
         <thead>
           <tr>
             <th>Id</th>
@@ -15,7 +14,6 @@ function TransferList({transfers}) {
             <th>sent</th>
           </tr>
         </thead>
-
         <tbody>
           (trasnfers.map(transfer => (
             <tr key={transfer.id}>

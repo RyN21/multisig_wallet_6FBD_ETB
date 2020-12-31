@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { getWeb3, getWallet } from './utils.js';
 import Header from './Header.js';
 import NewTransfer from './NewTransfer.js';
+import TransferList from './TransferList.js';
 
 function App() {
   const [web3, setWeb3] = useState(undefined);
@@ -10,6 +11,7 @@ function App() {
   const [wallet, setWallet] = useState(undefined);
   const [approvers, setApprovers] = useState([]);
   const [quorum, setQuorum] = useState(undefined);
+  const [transfers, setTransfers] = useState([]);
 
   useEffect(() => {
     const init = async () => {
@@ -18,11 +20,13 @@ function App() {
       const wallet = await getWallet(web3);
       const approvers = await wallet.methods.getApprovers().call();
       const quorum = await wallet.methods.quorum().call();
+      const transfers = await wallet.methods.getTransfers().call();
       setWeb3(web3);
       setAccounts(accounts);
       setWallet(wallet);
       setApprovers(approvers);
       setQuorum(quorum);
+      setTransfers(transfers);
     }
     init();
   }, []);
@@ -48,6 +52,7 @@ function App() {
       Multisig Dapp
       <Header approvers={approvers} quorum={quorum} />
       <NewTransfer createTransfer={createTransfer} />
+      <TransferList transfers={transfers}/>
     </div>
   );
 }
