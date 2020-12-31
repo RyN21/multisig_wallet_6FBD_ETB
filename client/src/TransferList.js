@@ -3,7 +3,7 @@ import React from 'react';
 function TransferList({transfers}) {
   return (
     <div>
-    <h2>Transfers</h2>
+      <h2>Transfers</h2>
       <table>
         <thead>
           <tr>
@@ -15,7 +15,7 @@ function TransferList({transfers}) {
           </tr>
         </thead>
         <tbody>
-          (transfers.map(transfer => (
+          {transfers.map(transfer => (
             <tr key={transfer.id}>
               <td>{transfer.id}</td>
               <td>{transfer.amount}</td>
@@ -23,7 +23,7 @@ function TransferList({transfers}) {
               <td>{transfer.approvers}</td>
               <td>{transfer.sent ? 'yes' : 'no'}</td>
             </tr>
-          )))
+          ))}
         </tbody>
       </table>
     </div>
