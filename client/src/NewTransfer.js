@@ -22,6 +22,7 @@ function NewTransfer() {
           type="text"
           onChange={e => updateTransfer(e, 'amount')}
         />
+        <button>Submit</button>
       </form>
     </div>
   )
