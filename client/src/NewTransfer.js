@@ -15,6 +15,13 @@ function NewTransfer() {
           type="text"
           onChange={e => updateTransfer(e, 'amount')}
         />
+
+        <label htmlFor="to">Send to</label>
+        <input
+          id="to"
+          type="text"
+          onChange={e => updateTransfer(e, 'amount')}
+        />
       </form>
     </div>
   )
